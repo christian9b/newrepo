@@ -1,0 +1,76 @@
+= Test File CBR
+
+.Zitat
+[quote, Wittlich, 27.05.2020]
+____
+*Quote* Asciidoc
+
+CBR: Ich teste Asciidoc.
+____
+
+.Ordered
+. number
+. number
+  .. letter
+  .. letter
+. number
+.. loweralpha
+.. loweralpha
+... lowerroman
+... lowerroman
+.... upperalpha
+.... upperalpha
+..... upperroman
+..... upperroman
+.... upperalpha
+... lowerroman
+.. loweralpha
+. number
+
+Needed Tools/Applications:
+
+1. Vagrant
+2. Oracle VirtualBox (including VBGuestAddition)
+3. Git (SSH-Connection to code.siemens.com already configured https://lcs-swap.code.siemens.io/codemanagement/git[see])
+
+## Installation
+
+* *Clone Repository to a folder at our local drive*
+
+[source, bash]
+--
+git clone git@code.siemens.com:disw-germany/devops/ansible-developer-vm.git
+--
+
+* *CD to the new folder*
+
+* *Start VM*
+[source, bash]
+vagrant up --provision
+
+
+## What's inside
+* Create Centos7 VirtualBox VM (based on geerlingguy\centos7)
+* Upgrade Yum repository, install Python3 and EPEL-Release (commonscript)
+* Install GnomeDesktop and start VM with GUI (guiscript)
+* Install Ansible (ansible_local)
+* Run Ansible Playbook (ansibledev-playbook.yml)
+** Install Git (role git)
+** Install VSCode and VSCode Extensions (role vscode)
+
+## Test VM
+* The first start of the VM will take some minutes, because there is a lot of stuff to download, install and upgrade.
+* After vagrant up command completed, login to the new VM with : vagrant/vagrant
+* Start new terminal and type in the commands below to see, if everything runs fine
+** Show Ansible Version
+[source,bash]
+ansible --version
+** Show Git Version
+[source,bash]
+git --version
+** Start VSCode
+[source,bash]
+code
+
+## Open Points
+* Create Desktop Shortcut for VSCode
